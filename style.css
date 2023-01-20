@@ -1,0 +1,178 @@
+html,
+body {
+  background-color: white;
+  color: black;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: auto;
+  max-width: 768px;
+  padding: 20px 5%;
+}
+
+.searchBar {
+  margin: 0 auto;
+}
+
+.mainArea {
+  display: flex;
+}
+
+section {
+  background-color: #171717;
+}
+
+h1,
+h2 {
+  line-height: 1;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+h2:first-of-type {
+  margin-top: 20px;
+}
+
+.logo {
+  display: block;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.logo img {
+  width: 500px;
+}
+
+@media all and (max-width: 768px) {
+  .logo img {
+    width: 450px;
+  }
+}
+
+@media all and (max-width: 479px) {
+  .logo img {
+    width: 350px;
+  }
+}
+
+.icon.heart {
+  color: lightcoral;
+}
+
+a {
+  color: red;
+  font-weight: bold;
+}
+
+a:hover,
+a:active {
+  color: mediumaquamarine;
+}
+
+a code {
+  color: black;
+}
+
+code {
+  background-color: aquamarine;
+  color: black;
+  font-family: monospace;
+  padding: 1px;
+  user-select: all;
+}
+
+code.image {
+  background-color: lightyellow;
+}
+
+#myInput {
+  background-image: url('searchIcon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-top: 60px;
+}
+
+#myTable th,
+#myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header,
+#myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+.button {
+  background-color: #A5D7EF;
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.center {
+  padding: 20px;
+  margin: auto;
+  width: 60%;
+}
+
+.exportButton {
+  float: right;
+  margin-top: 10px;
+}
+
+.checkInButton {
+  margin-left: 10px;
+}
+
+.checkedIn{
+  background-color: #ccc;
+  cursor:not-allowed;
+}
+
+.selectable{
+  cursor:pointer;
+}

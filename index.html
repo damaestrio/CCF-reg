@@ -1,0 +1,101 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CCF Registration App 1.0</title>
+  <link rel="canonical" href="https://simplepwa.com" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Icons and Colors -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <!--<link rel="manifest" href="./manifest.json">-->
+  <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#000000">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="msapplication-TileImage" content="./mstile-144x144.png">
+  <meta name="msapplication-config" content="./browserconfig.xml">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Javscript -->
+  <script>
+   if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+     navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
+    });
+   }
+  </script>
+  <script defer src="./scripts/jquery-3.6.3.min.js"></script>
+  <script defer src="./scripts/jquery.csv.min.js"></script>
+  <script src="./main.js"></script>
+ </head>
+
+ <body>
+
+  <header>
+   <div class="center">
+    <img src="images/ccfLogo.png" alt="Chicago Chess Foundation Logo and Motto">
+    <hr>
+    <h1>Check In A Player</h1>
+    <hr>
+   </div>
+  </header>
+  <div class=center>
+   <div class=searchBar>
+    <div class=mainArea>
+     <!--<input type="text" id="myInput" placeholder="Search for names...">-->
+
+     <!--<div class=checkInButton>-->
+     <!-- <button class="button" onclick="checkIn()" role="button">Check-In Player</button>-->
+     <!--</div>-->
+
+    </div>
+    <h3 id=message> Select a player by clicking on their row</h3>
+
+    <input class=button type="file" id="fileinput" />
+
+    <div class=exportButton>
+
+     <label for="sections">Choose a section</label>
+     <select class="button" name="sections" id="sections">
+      <option value="Pawns">Pawns</option>
+      <option value="Bishops">Bishops</option>
+      <option value="Knights">Knights</option>
+      <option value="Rooks">Rooks</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+      <option value="Late">Late</option>
+     </select>
+
+     <button id="ExportButton" class="button" role="button">Export Players</button>
+
+    </div>
+
+    <table id="myTable">
+    </table>
+
+
+
+   </div>
+
+  </div>
+
+
+  <script type="text/javascript">
+   document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+  </script>
+
+  <script type="text/javascript">
+   document.getElementById('ExportButton').addEventListener('click', generateDownload);
+  </script>
+
+ </body>
+
+ </html>
+ 
