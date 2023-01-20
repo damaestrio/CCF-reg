@@ -1,0 +1,22 @@
+{
+  "name": "ccf_reg",
+  "version": "1.0.0",
+  "description": "CCF Registration App",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damaestrio/CCF-reg.git"
+  },
+  "author": "Slalom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damaestrio/CCF-reg/issues"
+  },
+  "homepage": "https://github.com/damaestrio/CCF-reg#readme",
+  "devDependencies": {
+    "nwjs-builder-phoenix": "^1.15.0"
+  }
+}
