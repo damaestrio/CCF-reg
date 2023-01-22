@@ -40,6 +40,10 @@ h2:first-of-type {
   margin-top: 20px;
 }
 
+h3{
+  font-size: 20px;
+}
+
 .logo {
   display: block;
 }
@@ -161,7 +165,6 @@ code.image {
 
 .exportButton {
   float: right;
-  margin-top: 10px;
 }
 
 .checkInButton {
@@ -175,4 +178,10 @@ code.image {
 
 .selectable{
   cursor:pointer;
+}
+
+.searchBar
+{
+  width: 100%;
+  font-size: 36px;
 }

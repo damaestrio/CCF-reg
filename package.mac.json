@@ -1,0 +1,48 @@
+{
+  "name": "ccf2023",
+  "version": "1.0.0",
+  "description": "ccf registration app",
+  "main": "index.html",
+  "scripts": {
+    "dist": "build --tasks mac-x64 --mirror https://dl.nwjs.io/ .",
+    "build": "build --mac --x64 --mirror https://dl.nwjs.io/ .",
+    "start": "run --mac-x64 --mirror https://dl.nwjs.io/ ."
+  },
+  "author": "Slalom",
+  "license": "ISC",
+  "build": {
+    "appId": "io.github.evshiron.nwjs-builder-phoenix.project",
+    "nwVersion": "0.37.3",
+    "packed": true,
+    "targets": [
+      "zip",
+      "nsis7z"
+    ],
+    "strippedProperties": [
+      "build"
+    ],
+    "outputPattern": "${NAME} ${VERSION} ${PLATFORM} ${ARCH}",
+    "win": {
+      "productName": "CCF Registration",
+      "companyName": "nwjs-builder-phoenix",
+      "copyright": "copyright"
+    },
+    "mac": {
+      "displayName": "CCF Registration",
+      "copyright": "copyright",
+      "plistStrings": {
+        "CFBundleIdentifier": "io.github.evshiron.nwjs-builder-phoenix.project.modified",
+        "CFBundleDocumentTypes": []
+      }
+    },
+    "nsis": {
+      "installDirectory": "$PROGRAMFILES\\${_COMPANYNAME}\\${_APPNAME}",
+      "diffUpdaters": true
+    }
+  },
+  "devDependencies": {
+    "electron-builder": "^20.39.0",
+    "nwjs-builder-phoenix": "^1.15.0",
+    "typescript": "^2.2.1"
+  }
+}

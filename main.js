@@ -11,11 +11,18 @@
    $('#sections')[0].value = lastSection;
    gblSection = lastSection;
   }
+  
+  //display all players on initial load
   displayPlayers();
+  
   //sets the section, and the filename of the csv to be generated
   $('#sections').change(function() {
    gblSection = $(this).val();
    localStorage.setItem("Section", gblSection);
+  });
+  
+  $('#searchBar').keyup(function() {
+    displayPlayers($('#searchBar').val())
   });
  });
 
@@ -56,6 +63,10 @@
  }
 
  function parseCSVData(csvData) {
+  
+  //clear local data
+  localStorage.removeItem('PlayerData');
+  
   let parsedData = $.csv.toObjects(csvData);
 
   //Add to local storage
@@ -64,7 +75,7 @@
   gblPlayerData = parsedData;
  }
 
- function generateDownload() {
+function generateDownload() {
 
   let csvContent = "data:text/csv;charset=utf-8," + $.csv.fromObjects(gblPlayerData);
 
@@ -75,45 +86,53 @@
   document.body.appendChild(link); // Required for FF
 
   link.click();
- }
+}
 
- function displayPlayers(filter) {
+function displayPlayers(searchVal) {
   // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  //var validPlayers = Object.values(table).filter((x) => x.StudentName === input);
+  let input, table, tr, td, i, txtValue;
+  
+  let regex = new RegExp(searchVal, 'i');
+  
+  let validPlayers = gblPlayerData;
+  
+  if (searchVal)
+  {
+   validPlayers = gblPlayerData.filter(
+    player => (player.StudentName.search(regex) >= 0)
+   );
+  }
 
-  var table = document.getElementById("myTable");
+  $('#myTable').empty();
+  table = $('#myTable')[0];
 
-  var topRow = table.insertRow(0);
-  var topCategory1 = topRow.insertCell(0);
-  var topCategory2 = topRow.insertCell(1);
-  var topCategory3 = topRow.insertCell(2);
+  let topRow = table.insertRow(0);
+  let topCategory1 = topRow.insertCell(0);
+  let topCategory2 = topRow.insertCell(1);
+  let topCategory3 = topRow.insertCell(2);
   topCategory1.innerHTML = '<th style="width:60%;">Name</th>';
   topCategory2.innerHTML = '<th style="width:40%;">Grade</th>';
   topCategory3.innerHTML = '<th style="width:40%;">Team</th>';
 
-  for (i = 0; i < gblPlayerData.length; i++) {
-   //if (filter != null) {
-   //if (gblPlayerData[i].section)
-   var row = table.insertRow(-1);
-   var cell1 = row.insertCell(0);
-   var cell2 = row.insertCell(1);
-   var cell3 = row.insertCell(2);
-   cell1.innerHTML = gblPlayerData[i].StudentName;
-   cell2.innerHTML = gblPlayerData[i].Gr;
-   cell3.innerHTML = gblPlayerData[i].Team;
+  for (i = 0; i < validPlayers.length; i++) {
+   
+   let playerToDisplay = validPlayers[i];
+   
+   let row = table.insertRow(-1);
+   let cell1 = row.insertCell(0);
+   let cell2 = row.insertCell(1);
+   let cell3 = row.insertCell(2);
+   cell1.innerHTML = playerToDisplay.StudentName;
+   cell2.innerHTML = playerToDisplay.Gr;
+   cell3.innerHTML = playerToDisplay.Team;
    row.setAttribute("index", i);
 
    row.addEventListener("click", checkIn);
+   $(row).addClass("selectable");
 
-   if (gblPlayerData[i].Checkedin == 1) {
+   if (playerToDisplay.Checkedin == 1) {
     $(row).addClass("checkedIn")
    }
-   else {
-    $(row).addClass("selectable");
-   }
-   //}
   }
  }
 
