@@ -4,9 +4,9 @@
   "description": "ccf registration app",
   "main": "index.html",
   "scripts": {
-    "dist": "build --tasks mac-x64 --mirror https://dl.nwjs.io/ .",
-    "build": "build --mac --x64 --mirror https://dl.nwjs.io/ .",
-    "start": "run --mac-x64 --mirror https://dl.nwjs.io/ ."
+    "dist": "build --tasks win-x86 --mirror https://dl.nwjs.io/ .",
+    "build": "build --win --x86 --mirror https://dl.nwjs.io/ .",
+    "start": "run --win --mirror https://dl.nwjs.io/ ."
   },
   "author": "Slalom",
   "license": "ISC",
