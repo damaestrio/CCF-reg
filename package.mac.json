@@ -44,5 +44,15 @@
     "electron-builder": "^20.39.0",
     "nwjs-builder-phoenix": "^1.15.0",
     "typescript": "^2.2.1"
+  },
+  "window": {
+    "icon": "./assets/pd.png",
+    "title": "Contract Work Beta 2.2.2",
+    "fullscreen": false,
+    "width": 1280,
+    "height": 720,
+    "position": "mouse",
+    "min_width": 960,
+    "min_height": 480
   }
 }
