@@ -47,10 +47,10 @@
   },
   "window": {
     "fullscreen": false,
-    "width": 1280,
+    "width": 1440,
     "height": 720,
     "position": "mouse",
-    "min_width": 960,
-    "min_height": 480
+    "min_width": 1080,
+    "min_height": 720
   }
 }
