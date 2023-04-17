@@ -67,8 +67,13 @@
   //clear local data
   localStorage.removeItem('PlayerData');
   
+  // Set all checkins to '0' when initial file is uploaded
   let parsedData = $.csv.toObjects(csvData);
-
+  for (let i=0; i<parsedData.length; i++) {
+   if (parsedData[i].Checkedin == '' || parsedData[i].Checkedin == 1) {
+    parsedData[i].Checkedin = 0;
+   }
+  }
   //Add to local storage
   localStorage.setItem('PlayerData', JSON.stringify(parsedData));
 
@@ -89,6 +94,7 @@ function generateDownload() {
 }
 
 function displayPlayers(searchVal) {
+
   // Declare variables
   let input, table, tr, td, i, txtValue;
   
@@ -102,6 +108,7 @@ function displayPlayers(searchVal) {
     player => (player.StudentName.search(regex) >= 0)
    );
   }
+  
 
   $('#myTable').empty();
   table = $('#myTable')[0];
@@ -125,7 +132,8 @@ function displayPlayers(searchVal) {
    cell1.innerHTML = playerToDisplay.StudentName;
    cell2.innerHTML = playerToDisplay.Gr;
    cell3.innerHTML = playerToDisplay.Team;
-   row.setAttribute("index", i);
+   //row.setAttribute("index", i);
+   row.setAttribute("playerName", playerToDisplay.StudentName)
 
    row.addEventListener("click", checkIn);
    $(row).addClass("selectable");
@@ -137,23 +145,25 @@ function displayPlayers(searchVal) {
  }
 
  function checkIn(e) {
-  let selectedIndex = this.getAttribute("index");
+
+  //let selectedIndex = this.getAttribute("index");
+  let selectedPlayer = this.getAttribute('playerName')
+
   var message = document.getElementById("message");
+  
+  // use the selected player's name to determine the index of that player in the global player data
+  let playerGlobalIndex = gblPlayerData.findIndex(player => player.StudentName == selectedPlayer)
 
-
-
-  if (gblPlayerData[selectedIndex].Checkedin == 1) {
-   gblPlayerData[selectedIndex].Checkedin = 0;
+  if (gblPlayerData[playerGlobalIndex].Checkedin == 1) {
+   gblPlayerData[playerGlobalIndex].Checkedin = 0;
    message.innerHTML = "Player has already been unselected";
-
    $(this).removeClass("checkedIn");
    $(this).addClass("selectable");
    localStorage.setItem('PlayerData', JSON.stringify(gblPlayerData));
   }
   else {
-   gblPlayerData[selectedIndex].Checkedin = 1;
+   gblPlayerData[playerGlobalIndex].Checkedin = 1;
    message.innerHTML = "Player has been checked in! Click another player to select them";
-
    $(this).addClass("checkedIn");
    $(this).removeClass("selectable");
    localStorage.setItem('PlayerData', JSON.stringify(gblPlayerData));
