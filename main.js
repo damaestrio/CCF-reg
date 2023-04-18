@@ -3,6 +3,7 @@
  var displayData = null;
 
  self.addEventListener("load", (event) => {
+
   gblPlayerData = this.checkDataLoaded();
 
   let lastSection = localStorage.getItem("Section");
@@ -13,6 +14,7 @@
   }
   
   //display all players on initial load
+  
   displayPlayers();
   
   //sets the section, and the filename of the csv to be generated
@@ -29,14 +31,13 @@
  function readSingleFile(evt) {
   //Retrieve the first (and only!) File from the FileList object
   var f = evt.target.files[0];
-
-  if (f) {
+  if (f) { 
    var r = new FileReader();
    r.onload = function(e) {
     parseCSVData(e.target.result);
-
    }
    r.readAsText(f);
+   location.reload()
   }
   else {
    alert("Failed to load file");
@@ -48,10 +49,11 @@
   let storedPlayerData = localStorage.getItem('PlayerData');
 
   if (storedPlayerData != null) {
-   return JSON.parse(storedPlayerData);
-  }
-  else
+     return JSON.parse(storedPlayerData);
+   }
+  else {
    return null;
+  }
  }
 
  //Check in a player
