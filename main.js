@@ -37,11 +37,11 @@
     parseCSVData(e.target.result);
    }
    r.readAsText(f);
-   location.reload()
   }
   else {
    alert("Failed to load file");
   }
+  location.reload()
  }
 
  //check if we have data in localstorage
