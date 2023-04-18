@@ -1,6 +1,7 @@
  var gblPlayerData = null;
  var gblSection = null;
  var displayData = null;
+ 
 
  self.addEventListener("load", (event) => {
 
@@ -14,7 +15,7 @@
   }
   
   //display all players on initial load
-  displayPlayers();
+  //displayPlayers();
   
   //sets the section, and the filename of the csv to be generated
   $('#sections').change(function() {
@@ -82,26 +83,26 @@
  }
 
 function generateDownload() {
-
+  let date = new Date()
   let csvContent = "data:text/csv;charset=utf-8," + $.csv.fromObjects(gblPlayerData);
 
   let encodedUri = encodeURI(csvContent);
   let link = document.createElement("a");
   link.setAttribute("href", encodedUri);
-  link.setAttribute("download", gblSection + ".csv");
+  link.setAttribute("download", "players-" + date.getMonth() + '.' + date.getDate() + ".csv");
   document.body.appendChild(link); // Required for FF
 
   link.click();
 }
 
-async function displayPlayers(searchVal) {
+function displayPlayers(searchVal) {
 
   // Declare variables
   let input, table, tr, td, i, txtValue;
   
   let regex = new RegExp(searchVal, 'i');
   
-  let validPlayers = await gblPlayerData;
+  let validPlayers = gblPlayerData;
   
   if (searchVal)
   {

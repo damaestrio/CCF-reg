@@ -23,7 +23,9 @@
    </div>
   </header>
   <div class=center>
-   <input class=button type="file" id="fileinput" />
+   <input class="button" type="file" id="fileinput" />
+   <button id='SubmitFileButton' class="button" role="button">Submit</button>
+   <!--
    <label for="sections">Choose a section</label>
    <select class="button" name="sections" id="sections">
    <option value="Pawns">Pawns</option>
@@ -34,6 +36,7 @@
    <option value="Advanced">Advanced</option>
    <option value="Late">Late</option>
    </select>
+   -->
    <button id="ExportButton" class="button exportButton" role="button">Export Players (After Check-In Complete)</button>
 
    <div class=searchBar>
@@ -57,6 +60,10 @@
 
   <script type="text/javascript">
    document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+  </script>
+
+ <script type="text/javascript">
+   document.getElementById('SubmitFileButton').addEventListener('click', displayPlayers);
   </script>
 
   <script type="text/javascript">
