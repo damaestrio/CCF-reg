@@ -14,7 +14,6 @@
   }
   
   //display all players on initial load
-  
   displayPlayers();
   
   //sets the section, and the filename of the csv to be generated
@@ -41,7 +40,7 @@
   else {
    alert("Failed to load file");
   }
-  location.reload()
+
  }
 
  //check if we have data in localstorage
@@ -95,14 +94,14 @@ function generateDownload() {
   link.click();
 }
 
-function displayPlayers(searchVal) {
+async function displayPlayers(searchVal) {
 
   // Declare variables
   let input, table, tr, td, i, txtValue;
   
   let regex = new RegExp(searchVal, 'i');
   
-  let validPlayers = gblPlayerData;
+  let validPlayers = await gblPlayerData;
   
   if (searchVal)
   {
