@@ -15,6 +15,8 @@
   let header = table.createTHead()
   let headerRow = header.insertRow(0);
   let headerText = headerRow.insertCell(0);
+  let headerText2 = headerRow.insertCell(1);
+  let headerText3 = headerRow.insertCell(2);
   headerText.innerHTML = "<b>Checked-In Players</b>";
 
   let topRow = table.insertRow(1);
