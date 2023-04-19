@@ -185,6 +185,8 @@ function displayPlayers(searchVal) {
    cell3.innerHTML = playerToDisplay.Team;
    //row.setAttribute("index", i);
    row.setAttribute("playerName", playerToDisplay.StudentName)
+   row.setAttribute("playerGrade", playerToDisplay.Gr)
+   row.setAttribute("playerTeam", playerToDisplay.Team)
 
    row.addEventListener("click", checkIn);
    $(row).addClass("selectable");
@@ -198,13 +200,14 @@ function displayPlayers(searchVal) {
  function checkIn(e) {
 
   //let selectedIndex = this.getAttribute("index");
-  let selectedPlayer = this.getAttribute('playerName')
+  let selectedPlayerName = this.getAttribute('playerName')
+  let selectedPlayerGrade = this.getAttribute('playerGrade')
+  let selectedPlayerTeam = this.getAttribute('playerTeam')
 
   var message = document.getElementById("message");
   
   // use the selected player's name to determine the index of that player in the global player data
-  let playerGlobalIndex = gblPlayerData.findIndex(player => player.StudentName == selectedPlayer)
-
+  let playerGlobalIndex = gblPlayerData.findIndex(player => player.StudentName == selectedPlayerName && player.Gr == selectedPlayerGrade && player.Team == selectedPlayerTeam )
   if (gblPlayerData[playerGlobalIndex].Checkedin == 1) {
    gblPlayerData[playerGlobalIndex].Checkedin = 0;
    let playerToRemove = checkedInPlayers.findIndex(player => player.StudentName == gblPlayerData[playerGlobalIndex].StudentName)
