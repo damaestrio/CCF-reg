@@ -164,13 +164,12 @@ code.image {
   padding: 12px;
 }
 
-#checkedInTable tr {
-  border-bottom: 1px solid #ddd;
+#checkedInTable th {
+  border: 1px solid #ddd;
 }
 
-#checkedInTable tr.header,
-#checkedInTable tr:hover {
-  background-color: #f1f1f1;
+#checkedInTable tr {
+  border-bottom: 1px solid #ddd;
 }
 
 .button {
