@@ -159,7 +159,7 @@ function displayPlayers(searchVal) {
 
   if (gblPlayerData[playerGlobalIndex].Checkedin == 1) {
    gblPlayerData[playerGlobalIndex].Checkedin = 0;
-   message.innerHTML = "Player has already been unselected";
+   message.innerHTML = "Player has been unselected";
    $(this).removeClass("checkedIn");
    $(this).addClass("selectable");
    localStorage.setItem('PlayerData', JSON.stringify(gblPlayerData));
