@@ -113,9 +113,10 @@
   
   //clear local data
   localStorage.removeItem('PlayerData');
+  let csvDataTrimmed = csvData.trim()
   
   // Set all checkins to '0' when initial file is uploaded
-  let parsedData = $.csv.toObjects(csvData);
+  let parsedData = $.csv.toObjects(csvDataTrimmed);
   for (let i=0; i<parsedData.length; i++) {
    if (parsedData[i].Checkedin == '' || parsedData[i].Checkedin == 1) {
     parsedData[i].Checkedin = 0;
