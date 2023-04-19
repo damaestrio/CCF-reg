@@ -84,12 +84,13 @@
 
 function generateDownload() {
   let date = new Date()
+  let month = date.getMonth() + 1
   let csvContent = "data:text/csv;charset=utf-8," + $.csv.fromObjects(gblPlayerData);
 
   let encodedUri = encodeURI(csvContent);
   let link = document.createElement("a");
   link.setAttribute("href", encodedUri);
-  link.setAttribute("download", "players-" + date.getMonth() + '.' + date.getDate() + ".csv");
+  link.setAttribute("download", "players-" + month + '.' + date.getDate() + '.' + date.getFullYear() + ".csv");
   document.body.appendChild(link); // Required for FF
 
   link.click();
