@@ -1,7 +1,52 @@
  var gblPlayerData = null;
  var gblSection = null;
  var displayData = null;
+ let checkedInPlayers = [];
  
+ function displayCheckedInPlayers() {
+  // need to not redisplay the whole table every time
+  // link to jump to section
+  // Declare variables
+  let input, table, tr, td, txtValue;
+
+  $('#checkedInTable').empty();
+  table = $('#checkedInTable')[0];
+  
+  let header = table.createTHead()
+  let headerRow = header.insertRow(0);
+  let headerText = headerRow.insertCell(0);
+  headerText.innerHTML = "<b>Checked-In Players</b>";
+
+  let topRow = table.insertRow(1);
+  let topCategory1 = topRow.insertCell(0);
+  let topCategory2 = topRow.insertCell(1);
+  let topCategory3 = topRow.insertCell(2);
+  topCategory1.innerHTML = '<th style="width:60%;">Name</th>';
+  topCategory2.innerHTML = '<th style="width:40%;">Grade</th>';
+  topCategory3.innerHTML = '<th style="width:40%;">Team</th>';
+
+  if (gblPlayerData.length && !checkedInPlayers.length) {
+   $('.hideJumpLink').removeClass('hideJumpLink')
+   for (let i = 0; i < gblPlayerData.length; i++) {
+    if (gblPlayerData[i].Checkedin == 1) {
+     checkedInPlayers.push(gblPlayerData[i])
+    }
+   }
+  }
+  if (checkedInPlayers.length) {
+   for (let i = 0; i < checkedInPlayers.length; i++) {
+   
+   let row = table.insertRow(-1);
+   let cell1 = row.insertCell(0);
+   let cell2 = row.insertCell(1);
+   let cell3 = row.insertCell(2);
+   cell1.innerHTML = checkedInPlayers[i].StudentName;
+   cell2.innerHTML = checkedInPlayers[i].Gr;
+   cell3.innerHTML = checkedInPlayers[i].Team;
+   }
+
+  }
+ }
 
  self.addEventListener("load", (event) => {
 
@@ -159,17 +204,22 @@ function displayPlayers(searchVal) {
 
   if (gblPlayerData[playerGlobalIndex].Checkedin == 1) {
    gblPlayerData[playerGlobalIndex].Checkedin = 0;
+   let playerToRemove = checkedInPlayers.findIndex(player => player.StudentName == gblPlayerData[playerGlobalIndex].StudentName)
+   checkedInPlayers.splice(playerToRemove, 1)
    message.innerHTML = "Player has been unselected";
    $(this).removeClass("checkedIn");
    $(this).addClass("selectable");
    localStorage.setItem('PlayerData', JSON.stringify(gblPlayerData));
+   displayCheckedInPlayers()
   }
   else {
    gblPlayerData[playerGlobalIndex].Checkedin = 1;
    message.innerHTML = "Player has been checked in! Click another player to select them";
+   checkedInPlayers.push(gblPlayerData[playerGlobalIndex])
    $(this).addClass("checkedIn");
    $(this).removeClass("selectable");
    localStorage.setItem('PlayerData', JSON.stringify(gblPlayerData));
+   displayCheckedInPlayers()
   }
 
 

@@ -48,10 +48,25 @@
     <input class="searchBar" id="searchBar">
     </div>
 
+   <div>
+    <h3><a href='#checkedInTable' class='jumpLink'>View Checked-In Players</a></h3>
+   </div>
+    
     <table id="myTable">
     </table>
-
-
+    
+    <div class='hideJumpLink' id='jumpLinkTop1'>
+    <h3><a href='#' class='jumpLink'>Return to Top</a></h3>
+   </div>
+    
+   <div>
+    <table id="checkedInTable">
+    </table>
+    </div>
+    
+     <div class='hideJumpLink' id='jumpLinkTop2'>
+    <h3><a href='#' class='jumpLink'>Return to Top</a></h3>
+   </div>
 
    </div>
 
@@ -64,6 +79,7 @@
 
  <script type="text/javascript">
    document.getElementById('SubmitFileButton').addEventListener('click', displayPlayers);
+   document.getElementById('SubmitFileButton').addEventListener('click', displayCheckedInPlayers);
   </script>
 
   <script type="text/javascript">

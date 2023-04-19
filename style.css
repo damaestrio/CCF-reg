@@ -7,6 +7,7 @@ body {
   line-height: 1.5;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -21,6 +22,22 @@ body {
 
 .mainArea {
   display: flex;
+}
+
+.jumpLink {
+  color: #376e88;
+  font-size: 17px;
+  padding: 10px;
+}
+
+.jumpLink:hover{
+  color: #DD3E3E;
+  border: 2px dotted #376e88;
+  border-radius: 10px;
+}
+
+.hideJumpLink {
+  display:none;
 }
 
 section {
@@ -133,6 +150,28 @@ code.image {
   background-color: #f1f1f1;
 }
 
+#checkedInTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-top: 60px;
+}
+
+#checkedInTable th,
+#checkedInTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#checkedInTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#checkedInTable tr.header,
+#checkedInTable tr:hover {
+  background-color: #f1f1f1;
+}
 
 .button {
   background-color: #A5D7EF;
