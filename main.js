@@ -58,18 +58,18 @@
   
   gblPlayerData = this.checkDataLoaded();
 
-  let lastSection = localStorage.getItem("Section");
+  // let lastSection = localStorage.getItem("Section");
 
-  if (lastSection) {
-   $('#sections')[0].value = lastSection;
-   gblSection = lastSection;
-  }
+  // if (lastSection) {
+  //  $('#sections')[0].value = lastSection;
+  //  gblSection = lastSection;
+  // }
   
-  //sets the section, and the filename of the csv to be generated
-  $('#sections').change(function() {
-   gblSection = $(this).val();
-   localStorage.setItem("Section", gblSection);
-  });
+  // //sets the section, and the filename of the csv to be generated
+  // $('#sections').change(function() {
+  //  gblSection = $(this).val();
+  //  localStorage.setItem("Section", gblSection);
+  // });
   
   $('#searchBar').keyup(function() {
     displayPlayers($('#searchBar').val())
