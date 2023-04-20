@@ -3,11 +3,12 @@
  var displayData = null;
  let checkedInPlayers = [];
  
+ // Displays the function 
  function displayCheckedInPlayers() {
-  // need to not redisplay the whole table every time
-  // link to jump to section
-  // Declare variables
-  let input, table, tr, td, txtValue;
+  // clear checkedInPlayers 
+  checkedInPlayers = []
+
+  let table;
 
   $('#checkedInTable').empty();
   table = $('#checkedInTable')[0];
@@ -27,6 +28,7 @@
   topCategory2.innerHTML = '<th style="width:40%;">Grade</th>';
   topCategory3.innerHTML = '<th style="width:40%;">Team</th>';
 
+  // fill checkedInPlayers array with players whose Checkedin property in local storage is 1
   if (gblPlayerData.length && !checkedInPlayers.length) {
    $('.hideJumpLink').removeClass('hideJumpLink')
    for (let i = 0; i < gblPlayerData.length; i++) {
@@ -51,7 +53,9 @@
  }
 
  self.addEventListener("load", (event) => {
-
+  // clear local storage when a new csv is uploaded
+  localStorage.removeItem('PlayerData');
+  
   gblPlayerData = this.checkDataLoaded();
 
   let lastSection = localStorage.getItem("Section");
@@ -60,9 +64,6 @@
    $('#sections')[0].value = lastSection;
    gblSection = lastSection;
   }
-  
-  //display all players on initial load
-  //displayPlayers();
   
   //sets the section, and the filename of the csv to be generated
   $('#sections').change(function() {
