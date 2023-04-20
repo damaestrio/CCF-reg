@@ -3,7 +3,7 @@
  var displayData = null;
  let checkedInPlayers = [];
  
- // Displays the function 
+ // Displays the players who have been checked in in a table at the bottom of the page
  function displayCheckedInPlayers() {
   // clear checkedInPlayers 
   checkedInPlayers = []
